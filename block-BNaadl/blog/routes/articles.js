@@ -65,11 +65,9 @@ router.post("/:id/", (req, res) => {
 router.get("/:id/:like/like", (req, res) => {
   let id = req.params.id;
   let like = req.params.like;
-  console.log(like);
-  let count = Number(like + 1);
   Article.findByIdAndUpdate(
     id,
-    { $inc: { likes: count } },
+    { $inc: { likes: 1 } },
     { new: true },
     (err, updatedArticle) => {
       if (err) return next(err);
@@ -83,10 +81,9 @@ router.get("/:id/:like/like", (req, res) => {
 router.get("/:id/:like/dislike", (req, res) => {
   let id = req.params.id;
   let like = req.params.like;
-  let count = Number(like - 1);
   Article.findByIdAndUpdate(
     id,
-    { $inc: { likes: count } },
+    { $inc: { likes: -1 } },
     { new: true },
     (err, updatedArticle) => {
       if (err) return next(err);
