@@ -81,15 +81,21 @@ router.get("/:id/:like/like", (req, res) => {
 router.get("/:id/:like/dislike", (req, res) => {
   let id = req.params.id;
   let like = req.params.like;
+  let likeCount = Number(like);
+ if(likeCount >= 1 ){
   Article.findByIdAndUpdate(
     id,
     { $inc: { likes: -1 } },
     { new: true },
     (err, updatedArticle) => {
       if (err) return next(err);
-      res.redirect(`/articles/${id}`);
+     return  res.redirect(`/articles/${id}`);
     }
-  );
+  )
+ }
+ else{
+   res.redirect('/articles');
+ }
 });
 
 module.exports = router;
