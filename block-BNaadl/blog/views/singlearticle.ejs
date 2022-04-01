@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List of all the articles</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Our blog application</h2>
+    </header>
+    <main>
+      <section class="single-article">
+        <div class="container">
+          <article>
+            <h2 class="title"><%= article.title%></h2>
+            <div class="additional-information">
+              <div>
+                <span><%= article.author%></span>
+                <span><%= article.tags%></span>
+              </div>
+              <div class="likes-container">
+                <span class="article-likes"><%= article.likes%></span>
+                <a href="/articles/<%= article._id %>/<%= article.likes %>/like">like</a>
+                <a href="/articles/<%= article._id %>/<%= article.likes %>/dislike">dislike</a>
+              </div>
+            </div>
+            <p class="description"><%= article.description %></p>
+            <div class="action-container">
+              <a href="/articles/<%= article._id %>/" class="action-btn edit-btn">edit</a>
+              <a href="/articles/<%= article._id %>/delete" class=" action-btn delete-btn">delete</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="javascript/addLike.js"></script>
+  </body>
+</html>
